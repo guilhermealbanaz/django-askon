@@ -1,11 +1,18 @@
 from django.db import models
 
+class Generos(models.Model):
+    def __str__(self):
+        return self.descricao.capitalize()
+    descricao = models.CharField(max_length=100)
+
 class Jogos(models.Model):
     def __str__(self):
         return self.nome
     data = models.DateField()
     idade = models.IntegerField()
     nome = models.CharField(max_length=200)
+    genero = models.ManyToManyField(Generos)
+
 
 class Usuario(models.Model):
     def __str__(self):
