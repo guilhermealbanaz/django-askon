@@ -1,6 +1,13 @@
+from dataclasses import fields
+from pyexpat import model
 from rest_framework.serializers import ModelSerializer
 
-from core.models import Resenha, Jogos, Usuario, Curtidas, Comentario
+from core.models import Resenha, Jogos, Usuario, Curtidas, Comentario, Generos
+
+class GenerosSerializer(ModelSerializer):
+    class meta:
+        model = Generos
+        fields = '__all__'
 
 class ResenhaSerializer(ModelSerializer):
     class Meta:
@@ -25,4 +32,5 @@ class CurtidasSerializer(ModelSerializer):
 class ComentarioSerializer(ModelSerializer):
     class Meta:
         model = Comentario
-        fields = "__all__"                   
+        fields = "__all__"
+        depth = 1                   
