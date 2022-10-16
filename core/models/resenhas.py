@@ -13,8 +13,8 @@ class Resenha(models.Model):
 
     estrela = models.IntegerField(null=False, choices=nota_choices) 
     titulo = models.CharField(max_length=100)    
-    descricao = models.CharField(max_length=5000, verbose_name='descrição da resenha')
-    data = models.DateTimeField(verbose_name='data da publicação')
+    descricao = models.CharField(max_length=5000, verbose_name='descricao da resenha')
+    data = models.DateTimeField(verbose_name='data da publicacao')
     links = models.CharField(max_length=500)
     jogo = models.ForeignKey(Jogos, on_delete=models.PROTECT)
     usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT)
