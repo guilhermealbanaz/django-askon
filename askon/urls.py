@@ -1,13 +1,10 @@
 from django.contrib import admin
 from django.urls import include, path
-
 from rest_framework_simplejwt.views import (
     TokenObtainPairView,
     TokenRefreshView,
 )
-
 from rest_framework.routers import DefaultRouter
-
 from core.views import ResenhaViewSet, UsuarioViewSet, JogosViewSet, GenerosViewSet, CurtidasViewSet, ComentarioViewSet
 
 router = DefaultRouter()
