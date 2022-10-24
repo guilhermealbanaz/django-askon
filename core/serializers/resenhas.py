@@ -6,3 +6,4 @@ class ResenhaSerializer(ModelSerializer):
     class Meta:
         model = Resenha
         fields = '__all__'
+        depth  = 1
