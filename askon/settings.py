@@ -140,4 +140,4 @@ AUTH_USER_MODEL = "core.Usuario"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-SIMPLE_JWT = { "ACCESS_TOKEn_LIFETIME":timedelta(minutes=180), "REFRESH_TOKEN_LIFETIME":timedelta(days=1)}
+SIMPLE_JWT = { "ACCESS_TOKEN_LIFETIME":timedelta(minutes=180), "REFRESH_TOKEN_LIFETIME":timedelta(days=1)}
