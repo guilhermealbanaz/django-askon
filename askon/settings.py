@@ -2,6 +2,7 @@
 import os
 from decouple import config
 from pathlib import Path
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -138,3 +139,5 @@ REST_FRAMEWORK = {
 AUTH_USER_MODEL = "core.Usuario"
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
+SIMPLE_JWT = { "ACCESS_TOKEn_LIFETIME":timedelta(minutes=180), "REFRESH_TOKEN_LIFETIME":timedelta(days=1)}
