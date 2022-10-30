@@ -8,7 +8,7 @@ from rest_framework.routers import DefaultRouter
 from core.views import  DetailViewSet,ResenhaViewSet, UsuarioViewSet, JogosViewSet, GenerosViewSet, CurtidasViewSet, ComentarioViewSet
 
 router = DefaultRouter()
-router.register(r"Resenhas", ResenhaViewSet)
+router.register(r"Resenhas", ResenhaViewSet, basename='resenhaid')
 router.register(r"usuarios", UsuarioViewSet)
 router.register(r"jogos", JogosViewSet)
 router.register(r"generos", GenerosViewSet)
