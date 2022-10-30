@@ -9,4 +9,4 @@ class ResenhaViewSet(ModelViewSet):
         if iduser is not None:
             queryset = queryset.filter(usuario = iduser)
         return queryset
-        serializer_class = ResenhaSerializer
+    serializer_class = ResenhaSerializer
