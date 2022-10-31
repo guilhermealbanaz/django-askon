@@ -4,3 +4,4 @@ from .usuarios import UsuarioSerializer
 from .resenhas import ResenhaSerializer
 from .curtidas import CurtidasSerializer
 from .comentarios import ComentarioSerializer
+from .resenhas import ResenhaPostSerializer
