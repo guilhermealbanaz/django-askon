@@ -11,7 +11,7 @@ class ResenhaViewSet(ModelViewSet):
             queryset = queryset.filter(usuario = iduser)
         return queryset
 
-    def get_serializerclass(self, request):
+    def get_serializer_class(self):
         
         if self.action == "create":
             return ResenhaPostSerializer
