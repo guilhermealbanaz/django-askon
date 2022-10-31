@@ -16,7 +16,7 @@ class Resenha(models.Model):
     titulo = models.CharField(max_length=100)    
     descricao = models.CharField(max_length=5000, verbose_name='descricao da resenha')
     data = models.DateTimeField(default=datetime.now, verbose_name='data da publicacao')
-    links = models.CharField(max_length=500)
+    links = models.CharField(max_length=500, null=True, blank=True)
     jogo = models.ForeignKey(Jogos, on_delete=models.PROTECT)
     usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT)
 
