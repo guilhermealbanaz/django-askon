@@ -1,7 +1,7 @@
 from rest_framework.serializers import ModelSerializer
 
-
 from core.models import Usuario
+
 
 class UsuarioSerializer(ModelSerializer):
     class Meta:
@@ -15,3 +15,8 @@ class UsuarioSerializer(ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
+class UsuarioNestedSerializer(ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = ("id", "username", "email", "data", "fone",)

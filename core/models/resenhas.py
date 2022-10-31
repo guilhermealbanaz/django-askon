@@ -19,5 +19,6 @@ class Resenha(models.Model):
     links = models.CharField(max_length=500)
     jogo = models.ForeignKey(Jogos, on_delete=models.PROTECT)
     usuario = models.ForeignKey(Usuario, on_delete=models.PROTECT)
+
     def __str__(self):
         return self.titulo
