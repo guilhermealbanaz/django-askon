@@ -32,7 +32,8 @@ INSTALLED_APPS = [
     "corsheaders",
     "rest_framework",
     "core",
-    "rest_framework_simplejwt",  
+    "rest_framework_simplejwt",
+    "storages",
 ]
 
 MIDDLEWARE = [
@@ -141,3 +142,13 @@ AUTH_USER_MODEL = "core.Usuario"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 SIMPLE_JWT = { "ACCESS_TOKEN_LIFETIME":timedelta(minutes=180), "REFRESH_TOKEN_LIFETIME":timedelta(days=1)}
+
+DEFAULT_FILE_STORAGE = "storages.backends.s3boto3.S3Boto3Storage"
+
+AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID")
+
+AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY")
+
+AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME")
+
+AWS_QUERYSTRING_AUTH = False
