@@ -12,7 +12,8 @@ class Resenha(models.Model):
         (5, "5 estrelas"),  
     )
 
-    estrela = models.IntegerField(null=False, choices=nota_choices) 
+    estrela = models.IntegerField(null=False, choices=nota_choices)
+    imagem_resenha = models.ImageField(upload_to="askon/resenhas", blank=True, null=True)
     titulo = models.CharField(max_length=100)    
     descricao = models.CharField(max_length=5000, verbose_name='descricao da resenha')
     data = models.DateTimeField(default=datetime.now, verbose_name='data da publicacao')
