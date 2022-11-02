@@ -19,6 +19,7 @@ psycopg2-binary = "^2.9.5"
 boto3 = "^1.25.5"
 django-storages = "^1.13.1"
 Pillow = "^9.3.0"
+drf-extra-fields = "^3.4.1"
 
 
 [build-system]
