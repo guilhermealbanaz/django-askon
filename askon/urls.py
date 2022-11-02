@@ -5,7 +5,7 @@ from rest_framework_simplejwt.views import (
     TokenRefreshView,
 )
 from rest_framework.routers import DefaultRouter
-from core.views import  DetailViewSet,ResenhaViewSet, UsuarioViewSet, JogosViewSet, GenerosViewSet, CurtidasViewSet, ComentarioViewSet
+from core.views import DetailViewSet, ResenhaViewSet, UsuarioViewSet, JogosViewSet, GenerosViewSet, CurtidasViewSet, ComentarioViewSet, MeuUsuarioViewSet
 
 router = DefaultRouter()
 router.register(r"Resenhas", ResenhaViewSet, basename='resenhaid')
@@ -14,7 +14,8 @@ router.register(r"jogos", JogosViewSet)
 router.register(r"generos", GenerosViewSet)
 router.register(r"curtidas", CurtidasViewSet)
 router.register(r"comentario", ComentarioViewSet)
-router.register(r"details", DetailViewSet, basename='Usuariologado' )
+router.register(r"details", DetailViewSet, basename='Usuariologado')
+router.register(r"meu_usuario", MeuUsuarioViewSet, basename='meu_usuario')
 
 urlpatterns = [
     path("admin/", admin.site.urls),
