@@ -1,0 +1,1 @@
+from .resenhas import ResenhaPagination
