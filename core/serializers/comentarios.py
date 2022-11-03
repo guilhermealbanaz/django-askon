@@ -2,11 +2,15 @@ from rest_framework.serializers import ModelSerializer
 
 from core.models import Comentario
 
+from core.serializers.usuarios import UsuarioNestedSerializer
+
 
 class ComentarioSerializer(ModelSerializer):
+    usuario = UsuarioNestedSerializer()
+
     class Meta:
         model = Comentario
-        fields = "__all__"
+        fields = ("comentario", "data", "usuario",)
 
 
 class ComentarioPostSerializer(ModelSerializer):
@@ -19,5 +23,6 @@ class ComentarioPostSerializer(ModelSerializer):
 
         comentario = Comentario.objects.create(
             **validated_data, usuario=usuario)
+
         comentario.save()
         return comentario
