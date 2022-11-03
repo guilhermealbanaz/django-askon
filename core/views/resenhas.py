@@ -25,8 +25,9 @@ class ResenhaViewSet(ModelViewSet):
 
 class MinhasResenhasViewSet(ModelViewSet):
     pagination_class = ResenhaPagination
+    serializer_class = ResenhaSerializer
 
     def get_queryset(self):
         usuario = self.request.user
 
-        return Resenha.objects.filter(usuario=usuario)
+        return Resenha.objects.filter(usuario=usuario.id)
