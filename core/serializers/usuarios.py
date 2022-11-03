@@ -25,6 +25,10 @@ class UsuarioSerializer(ModelSerializer):
         if password is not None:
             instance.set_password(password)
 
+        instance.imagem_perfil = validated_data.get(
+            "imagem_perfil", instance.imagem_perfil)
+        instance.username = validated_data.get("username", instance.username)
+
         instance.save()
         return instance
 
