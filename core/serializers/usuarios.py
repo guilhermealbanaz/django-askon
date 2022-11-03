@@ -1,9 +1,12 @@
 from rest_framework.serializers import ModelSerializer
 
 from core.models import Usuario
+from drf_extra_fields.fields import Base64ImageField
 
 
 class UsuarioSerializer(ModelSerializer):
+    imagem_perfil = Base64ImageField()
+
     class Meta:
         model = Usuario
         fields = '__all__'
@@ -15,6 +18,7 @@ class UsuarioSerializer(ModelSerializer):
             instance.set_password(password)
         instance.save()
         return instance
+
 
 class UsuarioNestedSerializer(ModelSerializer):
     class Meta:

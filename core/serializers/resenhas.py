@@ -3,8 +3,7 @@ from drf_extra_fields.fields import Base64ImageField
 
 from core.models import Resenha, Jogos
 
-from core.serializers.usuarios import UsuarioSerializer
-from core.serializers.usuarios import UsuarioNestedSerializer
+from core.serializers.usuarios import UsuarioSerializer, UsuarioNestedSerializer
 
 
 class ResenhaSerializer(ModelSerializer):

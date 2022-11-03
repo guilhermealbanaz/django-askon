@@ -10,9 +10,9 @@ class ResenhaViewSet(ModelViewSet):
 
     def get_queryset(self):
         queryset = Resenha.objects.all()
-        iduser = self.request.query_params.get('iduser')
-        if iduser is not None:
-            queryset = queryset.filter(usuario=iduser)
+        usuario = self.request.query_params.get('usuario')
+        if usuario is not None:
+            queryset = queryset.filter(usuario=usuario)
         return queryset
 
     def get_serializer_class(self):
