@@ -1,6 +1,10 @@
 from rest_framework.viewsets import ModelViewSet
 from core.serializers import ResenhaSerializer, ResenhaPostSerializer
-from core.models import Resenha
+from core.models import Resenha, Curtidas
+from datetime import datetime
+from django.http import HttpResponse
+
+from rest_framework.decorators import action
 
 from core.paginations import ResenhaPagination
 
@@ -21,6 +25,25 @@ class ResenhaViewSet(ModelViewSet):
             return ResenhaPostSerializer
 
         return ResenhaSerializer
+
+    @action(detail=True, methods=['get'])
+    def curtir(self, request, pk):
+        usuario = self.request.user
+        resenha = Resenha.objects.get(id=pk)
+
+        try:
+            curtida = Curtidas.objects.get(resenha=resenha, usuario=usuario)
+        except Curtidas.DoesNotExist:
+            curtida = None
+
+        if curtida is None:
+            curtida = Curtidas.objects.create(
+                resenha=resenha, usuario=usuario, data=datetime.now())
+            curtida.save()
+            return HttpResponse(content=f'{usuario.username} curtiu a resenha {resenha.titulo}')
+        else:
+            curtida.delete()
+            return HttpResponse(content=f'{usuario.username} deixou de curtir a resenha {resenha.titulo}')
 
 
 class MinhasResenhasViewSet(ModelViewSet):
