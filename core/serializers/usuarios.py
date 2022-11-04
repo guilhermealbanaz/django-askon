@@ -38,7 +38,8 @@ class UsuarioPostSerializer(ModelSerializer):
         instance.save()
         return instance
 
+
 class UsuarioNestedSerializer(ModelSerializer):
     class Meta:
         model = Usuario
-        fields = ("id", "username", "email", "data", "fone",)
+        fields = ("id", "username", "email", "data", "fone", "imagem_perfil",)
