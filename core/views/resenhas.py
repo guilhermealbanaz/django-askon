@@ -11,13 +11,7 @@ from core.paginations import ResenhaPagination, ResenhaPerfilPagination
 
 class ResenhaViewSet(ModelViewSet):
     pagination_class = ResenhaPagination
-
-    def get_queryset(self):
-        queryset = Resenha.objects.all()
-        usuario = self.request.query_params.get('usuario')
-        if usuario is not None:
-            queryset = queryset.filter(usuario=usuario)
-        return queryset
+    queryset = Resenha.objects.all()
 
     def get_serializer_class(self):
 
