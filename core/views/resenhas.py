@@ -6,7 +6,7 @@ from django.http import HttpResponse
 
 from rest_framework.decorators import action
 
-from core.paginations import ResenhaPagination
+from core.paginations import ResenhaPagination, ResenhaPerfilPagination
 
 
 class ResenhaViewSet(ModelViewSet):
@@ -47,10 +47,20 @@ class ResenhaViewSet(ModelViewSet):
 
 
 class MinhasResenhasViewSet(ModelViewSet):
-    pagination_class = ResenhaPagination
+    pagination_class = ResenhaPerfilPagination
     serializer_class = ResenhaSerializer
 
     def get_queryset(self):
         usuario = self.request.user
 
         return Resenha.objects.filter(usuario=usuario.id)
+
+
+class MinhasResenhasViewSet(ModelViewSet):
+    pagination_class = ResenhaPerfilPagination
+    serializer_class = ResenhaSerializer
+
+    def get_queryset(self):
+        id_usuario = self.request.query_params.get("id_usuario")
+
+        return Resenha.objects.filter(usuario=id_usuario)

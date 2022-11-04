@@ -16,6 +16,8 @@ router.register(r"curtidas", CurtidasViewSet, basename="curtidas")
 router.register(r"comentario", ComentarioViewSet)
 router.register(r"details", DetailViewSet, basename='Usuariologado')
 router.register(r"meu_usuario", MeuUsuarioViewSet, basename='meu_usuario')
+router.register(r"resenhas_usuario", MeuUsuarioViewSet,
+                basename='resenhas_usuario')
 router.register(r"minhas_resenhas", MinhasResenhasViewSet,
                 basename='minhas_resenhas')
 

@@ -1,1 +1,1 @@
-from .resenhas import ResenhaPagination
+from .resenhas import ResenhaPagination, ResenhaPerfilPagination
