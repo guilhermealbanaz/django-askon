@@ -1,6 +1,6 @@
 from rest_framework.viewsets import ModelViewSet
 from core.serializers import ResenhaSerializer, ResenhaPostSerializer
-from core.models import Resenha, Curtidas
+from core.models import Resenha, Curtidas, Usuario
 from datetime import datetime
 from django.http import HttpResponse
 
@@ -50,11 +50,12 @@ class MinhasResenhasViewSet(ModelViewSet):
         return Resenha.objects.filter(usuario=usuario.id)
 
 
-class MinhasResenhasViewSet(ModelViewSet):
+class ResenhasUsuarioViewSet(ModelViewSet):
     pagination_class = ResenhaPerfilPagination
     serializer_class = ResenhaSerializer
 
     def get_queryset(self):
         id_usuario = self.request.query_params.get("id_usuario")
+        usuario = Usuario.objects.get(id=id_usuario)
 
-        return Resenha.objects.filter(usuario=id_usuario)
+        return Resenha.objects.filter(usuario=usuario)
