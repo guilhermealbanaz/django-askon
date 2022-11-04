@@ -5,19 +5,11 @@ from drf_extra_fields.fields import Base64ImageField
 
 
 class UsuarioSerializer(ModelSerializer):
-    imagem_perfil = Base64ImageField()
+    imagem_perfil = Base64ImageField(required=False)
 
     class Meta:
         model = Usuario
         fields = '__all__'
-
-    def create(self, validated_data):
-        password = validated_data.pop("password", None)
-        instance = self.Meta.model(**validated_data)
-        if password is not None:
-            instance.set_password(password)
-        instance.save()
-        return instance
 
     def update(self, instance, validated_data):
         password = validated_data.pop("password", None)
@@ -32,6 +24,19 @@ class UsuarioSerializer(ModelSerializer):
         instance.save()
         return instance
 
+
+class UsuarioPostSerializer(ModelSerializer):
+    class Meta:
+        model = Usuario
+        fields = ("username", "email", "password",)
+
+    def create(self, validated_data):
+        password = validated_data.pop("password", None)
+        instance = self.Meta.model(**validated_data)
+        if password is not None:
+            instance.set_password(password)
+        instance.save()
+        return instance
 
 class UsuarioNestedSerializer(ModelSerializer):
     class Meta:
