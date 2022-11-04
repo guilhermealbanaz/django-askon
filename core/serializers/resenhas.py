@@ -23,7 +23,7 @@ class ResenhaPostSerializer(ModelSerializer):
 
     class Meta:
         model = Resenha
-        fields = ("usuario", "titulo", "descricao",
+        fields = ("id", "usuario", "titulo", "descricao",
                   "estrela", "imagem_resenha", "jogo",)
 
     def create(self, validated_data):
