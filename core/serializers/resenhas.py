@@ -1,18 +1,23 @@
-from rest_framework.serializers import ModelSerializer, CurrentUserDefault, CharField
+from rest_framework.serializers import ModelSerializer, CurrentUserDefault, CharField, SerializerMethodField
 from drf_extra_fields.fields import Base64ImageField
 
-from core.models import Resenha, Jogos
+from core.models import Resenha, Jogos, Curtidas
 
 from core.serializers.usuarios import UsuarioSerializer, UsuarioNestedSerializer
 
 
 class ResenhaSerializer(ModelSerializer):
     usuario = UsuarioNestedSerializer()
+    qtd_curtidas = SerializerMethodField()
 
     class Meta:
         model = Resenha
         fields = '__all__'
         depth = 1
+
+    def get_qtd_curtidas(self, instance):
+        qtd_curtidas = Curtidas.objects.filter(resenha=instance.id).count()
+        return qtd_curtidas
 
 
 class ResenhaPostSerializer(ModelSerializer):
