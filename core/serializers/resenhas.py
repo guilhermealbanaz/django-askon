@@ -9,6 +9,7 @@ from core.serializers.usuarios import UsuarioSerializer, UsuarioNestedSerializer
 class ResenhaSerializer(ModelSerializer):
     usuario = UsuarioNestedSerializer()
     qtd_curtidas = SerializerMethodField()
+    nota_geral = SerializerMethodField()
 
     class Meta:
         model = Resenha
@@ -26,7 +27,6 @@ class ResenhaSerializer(ModelSerializer):
 
 
 class ResenhaPostSerializer(ModelSerializer):
-
     usuario = UsuarioSerializer(default=CurrentUserDefault())
     imagem_resenha = Base64ImageField()
     jogo = CharField()
