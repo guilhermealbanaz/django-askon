@@ -19,6 +19,11 @@ class ResenhaSerializer(ModelSerializer):
         qtd_curtidas = Curtidas.objects.filter(resenha=instance.id).count()
         return qtd_curtidas
 
+    def get_nota_geral(self, instance):
+        nota_geral = round(
+            (instance.nota_grafico + instance.nota_cenario + instance.nota_audio) / 3, 2)
+        return nota_geral
+
 
 class ResenhaPostSerializer(ModelSerializer):
 
@@ -29,7 +34,7 @@ class ResenhaPostSerializer(ModelSerializer):
     class Meta:
         model = Resenha
         fields = ("id", "usuario", "titulo", "descricao",
-                  "estrela", "imagem_resenha", "jogo",)
+                  "nota_grafico", "nota_audio", "nota_cenario", "imagem_resenha", "jogo",)
 
     def create(self, validated_data):
         nome_jogo = validated_data.pop("jogo")
